@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# If you fork this project, edit these to download your repository.
-git_user="raehik"
-git_repo="mybash"
-
 echo -n "Install directory (defaults to '~/.mybash.d'): "
 read MYBASH_DIR
 [ -z $MYBASH_DIR ] && MYBASH_DIR="${HOME}/.mybash.d" # if input empty, use default
@@ -25,8 +21,8 @@ if [ -e ${MYBASH_DIR} ]; then	# if is existing dir
 fi
 
 # download and untar
-echo "Downloading from ${git_user}/${git_repo}"
-curl -L -s https://api.github.com/repos/${git_user}/${git_repo}/tarball | tar -zx -C /tmp
+echo "Downloading..."
+curl -L -s https://api.github.com/repos/raehik/mybash/tarball | tar -zx -C /tmp
 mv /tmp/${git_user}-${git_repo}-* ${MYBASH_DIR}
 echo "Extracted and moved to ${MYBASH_DIR}"
 
