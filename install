@@ -28,6 +28,10 @@ curl -L -s https://api.github.com/repos/raehik/mybash/tarball/${branch} | tar -z
 mv /tmp/raehik-mybash-* ${MYBASH_DIR}
 echo "Extracted and moved to ${MYBASH_DIR}"
 
+# backup .bashrc because we are overly careful
+echo "Backing up .bashrc to .bashrc.bak..."
+cp ${HOME}/.bashrc ${HOME}/.bashrc.bak
+
 # append sourcing line
 echo "Appending '. ${MYBASH_DIR}/main' into ~/.bashrc... (later make this work for all shells)"
 echo ". ${MYBASH_DIR}/main" >> ${HOME}/.bashrc # later, the filename will depend on the shell you choose (it should then ask to check that your .(shell)rc is what I think it is)
