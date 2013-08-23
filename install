@@ -1,6 +1,7 @@
 #!/bin/bash
 
-dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+branch="install-script"
+
 echo -n "Install directory (defaults to '~/.mybash.d'): "
 read MYBASH_DIR
 [ -z $MYBASH_DIR ] && MYBASH_DIR="${HOME}/.mybash.d" # if input empty, use default
@@ -23,7 +24,7 @@ fi
 
 # download and untar
 echo "Downloading..."
-curl -L -s https://api.github.com/repos/raehik/mybash/tarball | tar -zx -C /tmp
+curl -L -s https://api.github.com/repos/raehik/mybash/tarball/${branch} | tar -zx -C /tmp
 mv /tmp/raehik-mybash-* ${MYBASH_DIR}
 echo "Extracted and moved to ${MYBASH_DIR}"
 
