@@ -12,5 +12,6 @@ Installation
 
 If you don't want to use the installation script, follow these steps:
 
-1.	download the repository anywhere you like
-2.	source the file 'main' in your shell profile
+1.  download the repository anywhere you like
+2.  source the file 'main' in your shell profile
+3.  restart your shell
