@@ -6,12 +6,12 @@ read MYBASH_DIR
 
 # be careful and verbose about directory
 if [ -e ${MYBASH_DIR} ]; then	# if is existing dir
-	echo "Warning: The directory already exists. Anything in it will be lost. Continue? (y/n) (not for now)"
+	echo "Warning: The directory already exists. Anything in it will be lost. Continue? (y/n)"
 	read dir_cont
-	if [ ${dir_cont} = "y" || ${dir_cont} = "Y" ]; then
+	if [ ${dir_cont} = "y" ] || [ ${dir_cont} = "Y" ]; then
 		echo "Deleting ${MYBASH_DIR}..."
 		rm -r ${MYBASH_DIR}
-	elif [ ${dir_cont} = "n" || ${dir_cont} = "N" ]; then
+	elif [ ${dir_cont} = "n" ] || [ ${dir_cont} = "N" ]; then
 		echo "Exiting..."
 		exit 1
 	else
