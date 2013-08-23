@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# If you fork this project, edit these to download your repository.
+git_user="raehik"
+git_repo="mybash"
+
+echo -n "Install directory (defaults to '~/.mybash.d'): "
+read MYBASH_DIR
+[ -z $MYBASH_DIR ] && MYBASH_DIR="${HOME}/.mybash.d" # if input empty, use default
+
+# be careful and verbose about directory
+if [ -e ${MYBASH_DIR} ]; then	# if is existing dir
+	echo "Warning: The directory already exists. Anything in it will be lost. Continue? (y/n) (not for now)"
+	read dir_cont
+	if [ ${dir_cont} = "y" || ${dir_cont} = "Y" ]; then
+		echo "Deleting ${MYBASH_DIR}..."
+		rm -r ${MYBASH_DIR}
+	elif [ ${dir_cont} = "n" || ${dir_cont} = "N" ]; then
+		echo "Exiting..."
+		exit 1
+	else
+		echo "Error: Your input was not y/n (${dir_cont})"
+		exit 1
+	fi
+fi
+
+# download and untar
+echo "Downloading from ${git_user}/${git_repo}"
+curl -L -s https://api.github.com/repos/${git_user}/${git_repo}/tarball | tar -zx -C /tmp
+mv /tmp/${git_user}-${git_repo}-* ${MYBASH_DIR}
+echo "Extracted and moved to ${MYBASH_DIR}"
+
+# append sourcing line
+echo "Appending '. ${MYBASH_DIR}/main' into ~/.bashrc... (later make this work for all shells)"
+echo ". ${MYBASH_DIR}/main" >> ${HOME}/.bashrc # later, the filename will depend on the shell you choose (it should then ask to check that your .(shell)rc is what I think it is)
+
+echo "Install complete. Restart your shell by logging out and in (if you're in console mode) or starting a new terminal."
