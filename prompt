@@ -1,0 +1,37 @@
+#!/bin/bash
+
+function mybash_prompt {
+. ~/.mybash.d/.colours
+# Default settings if .mybash is loaded and hostname has no colour scheme
+col_name=${dark}${grn}
+col_at=${dark}${grn}
+col_host=${dark}${grn}
+col_colon=${dark}${grn}
+col_pwd=${lght}${blu}
+col_prompt=${lght}${red}
+
+# SRV1-ZIPPY
+if [ $(hostname) == "SRV1-ZIPPY" ]
+  then
+  col_name=${dark}${grn}
+  col_at=${dark}${grn}
+  col_host=${dark}${grn}
+  col_colon=${dark}${grn}
+  col_pwd=${lght}${blu}
+  col_prompt=${lght}${red}
+fi
+
+# This changes all COL_ variables except COL_PWD to ${DARK}${RED} when logged
+# on as root user (with any hostname)
+if [ $EUID -eq "0" ]
+  then
+  col_name=${dark}${red}
+  col_at=${dark}${red}
+  col_host=${dark}${red}
+  col_colon=${dark}${red}
+  col_prompt=${dark}${red}
+fi
+
+# You shouldn't need to change this: it depends on the COL_ variables.
+PS1="${debian_chroot:+($debian_chroot)}${col_name}\u${col_at}@${col_host}\h${col_colon}:${col_pwd}\${PWD}${col_prompt}\\$ ${none}"
+}
