@@ -1,0 +1,15 @@
+#!/bin/bash
+
+function usage {
+	echo "Usage: $0 conf_to_disable"
+	if [ $# -eq 0 ]; then
+		exit 99
+	else
+		exit $1
+	fi
+}
+
+function mybash-disconf {
+	echo "mybash-disconf doesn't work at the moment."
+}
+mybash-disconf
