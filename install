@@ -1,9 +1,10 @@
 #!/bin/bash
 
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo -n "Install directory (defaults to '~/.mybash.d'): "
 read MYBASH_DIR
 [ -z $MYBASH_DIR ] && MYBASH_DIR="${HOME}/.mybash.d" # if input empty, use default
-
+[[ ! $MYBASH_DIR == /* ]] && MYBASH_DIR="$(pwd)/${MYBASH_DIR}" # if input is relative, add on the pwd
 # be careful and verbose about directory
 if [ -e $MYBASH_DIR ]; then	# if is existing dir
 	echo -n "Warning: Directory already exists. Contents will be deleted. Continue? (y/n): "
