@@ -15,7 +15,7 @@ if [ -e $MYBASH_DIR ]; then	# if is existing dir
 		echo "Exiting..."
 		exit 1
 	else
-		echo "Error: Your input was not y/n (${dir_cont})"
+		echo "Error: Your input was not y/n (was ${dir_cont})"
 		exit 1
 	fi
 fi
