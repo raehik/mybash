@@ -23,7 +23,7 @@ fi
 # download and untar
 echo "Downloading..."
 curl -L -s https://api.github.com/repos/raehik/mybash/tarball | tar -zx -C /tmp
-mv /tmp/${git_user}-${git_repo}-* ${MYBASH_DIR}
+mv /tmp/raehik-mybash-* ${MYBASH_DIR}
 echo "Extracted and moved to ${MYBASH_DIR}"
 
 # append sourcing line
