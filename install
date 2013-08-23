@@ -1,6 +1,6 @@
 #!/bin/bash
 
-branch="install-script"
+branch="master"
 
 echo -n "Install directory (defaults to '~/.mybash.d'): "
 read MYBASH_DIR
