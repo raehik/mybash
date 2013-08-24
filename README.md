@@ -8,7 +8,7 @@ Essentially, it neatens up Bash configuration by keeping all user settings separ
 Installation
 ------------
 
-    curl -s https://raw.github.com/raehik/mybash/master/install -o /tmp/mybash-install ; bash /tmp/mybash-install
+    curl -s https://raw.github.com/raehik/mybash/dev/install -o /tmp/mybash-install ; bash /tmp/mybash-install
 
 If you don't want to use the installation script, follow these steps:
 
