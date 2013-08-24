@@ -2,22 +2,24 @@
 
 branch="master"
 
-echo -n "Install directory (defaults to '~/.mybash.d'): "
+# ask for install directory
+echo -n "Install to (relative/absolute path)(defaults to '~/.mybash.d'): "
 read MYBASH_DIR
-[ -z $MYBASH_DIR ] && MYBASH_DIR="${HOME}/.mybash.d" # if input empty, use default
-[[ ! $MYBASH_DIR == /* ]] && MYBASH_DIR="$(pwd)/${MYBASH_DIR}" # if input is relative, add on the pwd
+[ -z $MYBASH_DIR ] && MYBASH_DIR="${HOME}/.mybash.d" # if input is null, use default
+[[ ! $MYBASH_DIR == /* ]] && MYBASH_DIR="$(pwd)/${MYBASH_DIR}" # if path is relative, prepend working dir
+
 # be careful and verbose about directory
 if [ -e $MYBASH_DIR ]; then	# if is existing dir
-	echo -n "Warning: Directory already exists. Contents will be deleted. Continue? (y/n): "
+	echo -n "WARNING: Directory already exists. Contents will be deleted. Continue? (y/n): "
 	read dir_cont
 	if [ "$dir_cont" == "y" ] || [ "$dir_cont" == "Y" ]; then
 		echo "Deleting ${MYBASH_DIR}..."
-		rm -r ${MYBASH_DIR}
+		rm -r $MYBASH_DIR
 	elif [ "$dir_cont" == "n" ] || [ "$dir_cont" == "N" ]; then
 		echo "Exiting..."
 		exit 1
 	else
-		echo "Error: Your input was not y/n (was ${dir_cont})"
+		echo "ERROR: Your input was not y/n (was ${dir_cont})"
 		exit 1
 	fi
 fi
@@ -25,15 +27,23 @@ fi
 # download and untar
 echo "Downloading..."
 curl -L -s https://api.github.com/repos/raehik/mybash/tarball/${branch} | tar -zx -C /tmp
-mv /tmp/raehik-mybash-* ${MYBASH_DIR}
-echo "Extracted and moved to ${MYBASH_DIR}"
+
+# Move output. Naming scheme is (github user)-(github repo)-(part of hash)
+# so match any hash
+echo "Moving to ${MYBASH_DIR}..."
+mv /tmp/raehik-mybash-* ${MYBASH_DIR} # also changes folder name
 
 # backup .bashrc because we are overly careful
 echo "Backing up .bashrc to .bashrc.bak..."
 cp ${HOME}/.bashrc ${HOME}/.bashrc.bak
 
-# append sourcing line
+# source main in .bashrc
 echo "Appending '. ${MYBASH_DIR}/main' into ~/.bashrc... (later make this work for all shells)"
 echo ". ${MYBASH_DIR}/main" >> ${HOME}/.bashrc # later, the filename will depend on the shell you choose (it should then ask to check that your .(shell)rc is what I think it is)
 
-echo "Install complete. Restart your shell by logging out and in (if you're in console mode) or starting a new terminal."
+if [ $? -eq 0 ]; then
+	echo "Install complete. Restart your shell or start a new terminal. (does exec bash work in login shell??)"
+else
+	echo "Something went wrong. Please check your .bashrc and make sure ${MYBASH_DIR} is populated."
+	exit 1
+fi
