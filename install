@@ -1,6 +1,6 @@
 #!/bin/bash
 
-branch="master"
+branch="dev"
 
 echo -n "Install directory (defaults to '~/.mybash.d'): "
 read MYBASH_DIR
@@ -24,8 +24,7 @@ fi
 
 # download and untar
 echo "Downloading..."
-curl -L -s https://api.github.com/repos/raehik/mybash/tarball/${branch} | tar -zx -C /tmp
-mv /tmp/raehik-mybash-* ${MYBASH_DIR}
+curl -L -s https://api.github.com/repos/raehik/mybash/tarball/${branch} | tar -zxC ${MYBASH_DIR} --strip-components=1
 echo "Extracted and moved to ${MYBASH_DIR}"
 
 # backup .bashrc because we are overly careful
