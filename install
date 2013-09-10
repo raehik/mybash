@@ -28,7 +28,9 @@ if [ -e $MYBASH_DIR ]; then	# if is existing dir
 	fi
 fi
 
-# download and untar
+# create directory
+mkdir ${MYBASH_DIR}
+# download and untar all in one
 echo "Downloading..."
 curl -L -s https://api.github.com/repos/raehik/mybash/tarball/${branch} | tar -zxC ${MYBASH_DIR} --strip-components=1
 echo "Extracted to ${MYBASH_DIR}"
