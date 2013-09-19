@@ -1,51 +1,46 @@
 #!/bin/bash
+set -e
 
 branch="dev"
-
-echo "NOTE: You are installing the 'dev' version of MyBash. It is guaranteed not to work in some places."
+echo "NOTE: You are installing the dev version of MyBash. It is pretty much guaranteed not to work in some places. Please report any issues on the GitHub project page."
 echo -n "(press Enter to continue)"
 read
 
 # ask for install directory
 echo -n "Install to (relative/absolute path)(defaults to '~/.mybash.d'): "
 read MYBASH_DIR
-[ -z $MYBASH_DIR ] && MYBASH_DIR="${HOME}/.mybash.d" # if input is null, use default
-[[ ! $MYBASH_DIR == /* ]] && MYBASH_DIR="$(pwd)/${MYBASH_DIR}" # if path is relative, prepend working dir
+# if input is null, use default
+[ -z $MYBASH_DIR ] && MYBASH_DIR="$HOME/.mybash.d" ; eval MYBASH_DIR=$MYBASH_DIR
 
-# be careful and verbose about directory
-if [ -e $MYBASH_DIR ]; then	# if is existing dir
-	echo -n "WARNING: Directory already exists. Contents will be deleted. Continue? (y/n): "
+# if directory exists, delete it
+if [ -e $MYBASH_DIR ]; then
+	echo -n "WARNING: Directory already exists. Contents will be deleted. Continue? (Y/N): "
 	read dir_cont
-	if [ "$dir_cont" == "y" ] || [ "$dir_cont" == "Y" ]; then
-		echo "Deleting ${MYBASH_DIR}..."
-		rm -r $MYBASH_DIR
-	elif [ "$dir_cont" == "n" ] || [ "$dir_cont" == "N" ]; then
+	if [ "$dir_cont" == "Y" ] || [ "$dir_cont" == "y" ]; then
+		echo "Deleting $MYBASH_DIR..."
+		rm -r -f $MYBASH_DIR
+	elif [ "$dir_cont" == "N" ] || [ "$dir_cont" == "n" ]; then
 		echo "Exiting..."
 		exit 1
 	else
-		echo "ERROR: Your input was not y/n (was ${dir_cont})"
+		echo "ERROR: Your input was not Y/N."
 		exit 1
 	fi
 fi
 
-# create directory
-mkdir ${MYBASH_DIR}
+# create directory & all parents
+mkdir -p $MYBASH_DIR
 # download and untar all in one
-echo "Downloading..."
-curl -L -s https://api.github.com/repos/raehik/mybash/tarball/${branch} | tar -zxC ${MYBASH_DIR} --strip-components=1
-echo "Extracted to ${MYBASH_DIR}"
+echo "Downloading & extracting..."
+curl -L -s https://api.github.com/repos/raehik/mybash/tarball/$branch | tar -zxC $MYBASH_DIR --strip-components=1
+echo "Extracted to $MYBASH_DIR"
 
-# backup .bashrc because we are overly careful
 echo "Backing up .bashrc to .bashrc.bak..."
-cp ${HOME}/.bashrc ${HOME}/.bashrc.bak
+cp $HOME/.bashrc $HOME/.bashrc.bak
 
 # source main in .bashrc
-echo "Appending '. ${MYBASH_DIR}/main' into ~/.bashrc... (later make this work for all shells)"
-echo ". ${MYBASH_DIR}/main" >> ${HOME}/.bashrc # later, the filename will depend on the shell you choose (it should then ask to check that your .(shell)rc is what I think it is)
+echo "Sourcing $MYBASH_DIR/main in ~/.bashrc..."
+echo ". $MYBASH_DIR/main" >> $HOME/.bashrc
 
-if [ $? -eq 0 ]; then
-	echo "Install complete. Restart your shell or start a new terminal. (does exec bash work in login shell??)"
-else
-	echo "Something went wrong. Please check your .bashrc and make sure ${MYBASH_DIR} is populated."
-	exit 1
-fi
+echo "Install complete. Running 'exec bash'..."
+exec bash
