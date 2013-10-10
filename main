@@ -7,7 +7,9 @@
 function mybash-reload {
 	for file in $MYBASH_DIR/confs-enabled
 	do
-		. file
+		if [[ -f $file ]]; then
+			. $MYBASH_DIR/confs-enabled/$file
+		fi
 	done
 	mybash-refresh-prompt
 	mybash-refresh-aliases
