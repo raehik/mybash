@@ -1,5 +1,6 @@
 #!/bin/bash
 
+function mybash-refresh-aliases() {
 # helpful up directory alias
 alias u='cd ..'
 
@@ -19,3 +20,4 @@ alias l='ls -CF'
 
 # set command-line editing to vi mode
 set -o vi
+}
