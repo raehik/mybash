@@ -8,4 +8,4 @@ function mybash-reload {
 	mybash-refresh-prompt
 	mybash-refresh-aliases
 }
-loadconfs
+mybash-reload
