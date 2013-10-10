@@ -1,14 +1,14 @@
 MyBash
 ======
 
-Allows easy configuration of Bash profile variables. MyBash comes with multiple universal and specialised configs, and only knowledge of Bash scripting is needed to create your own.
+Allows easy configuration of Bash profile variables. MyBash comes with multiple universal and specialised configs, and only Bash knowledge is needed to create your own.
 
-Essentially, it neatens up Bash configuration by keeping all user settings separate from the main .bashrc (for easy moving between users/computers) and separating custom functions, prompts, etc, making it possible to enable and disable them on the fly.
+Essentially, it neatens up Bash shell startup files by keeping all user settings separate from the main .bashrc (for easy moving between users/computers) and making it possible to enable and disable them easily.
 
 Installation
 ------------
 
-    curl -s https://raw.github.com/raehik/mybash/dev/install -o /tmp/mybash-install ; bash /tmp/mybash-install
+    curl -s https://raw.github.com/raehik/mybash/master/install -o /tmp/mybash-install ; bash /tmp/mybash-install
 
 If you don't want to use the installation script, follow these steps:
 
