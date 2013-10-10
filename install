@@ -2,6 +2,7 @@
 set -e
 
 branch="dev"
+echo
 echo "NOTE: You are installing the dev version of MyBash. It is pretty much guaranteed not to work in some places. Please report any issues on the GitHub project page."
 echo -n "(press Enter to continue)"
 read
