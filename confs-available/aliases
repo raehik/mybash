@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# helpful up directory alias
-alias u='cd ..'
+function mybash-refresh-aliases() {
+alias u='cd ..' # go up 1 level
 
 # colour ls and grep by default if available
 if [ -x /usr/bin/dircolors ]; then
@@ -19,3 +19,4 @@ alias l='ls -CF'
 
 # set command-line editing to vi mode
 set -o vi
+}
