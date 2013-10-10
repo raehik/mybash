@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# This file is meant to be sourced to provide readable variables for colours.
-# Use '. ~/.mybash/.colours' to source it.
+# This file is meant to be sourced to provide human readable variables for
+# terminal colours.
+# Use '. ~/{MYBASH_DIR}/.colours' to source it.
 local none='\[\033[0m\]'
 local lght='\[\033[1m\]'
 local dark='\[\033[0m\]'
