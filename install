@@ -43,7 +43,7 @@ echo "Adding environment variable MYBASH_DIR in ~/.bashrc..."
 echo "MYBASH_DIR=$MYBASH_DIR" >> $HOME/.bashrc
 
 echo "Sourcing $MYBASH_DIR/main in ~/.bashrc..."
-echo ". $MYBASH_DIR/main" >> $HOME/.bashrc
+echo ". $$MYBASH_DIR/main" >> $HOME/.bashrc
 
 echo "Install complete. Running 'exec bash'..."
 exec bash
