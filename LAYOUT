@@ -1,0 +1,24 @@
+1) EVERYTHING IS A FUNCTION
+	Functions are nice. Functions can have local variables. And functions
+	can be called later if necessary - even better, if they DON'T need to
+	be called later, they can be unset after being run. So they very much
+	help keep your profile neat and understandable, as well as highly
+	modular.
+
+2) APACHE-LIKE CONFIG CONFIG
+	You might want to disable a config just for a while because you're
+	doing a certain thing, or you're testing a config and need an easy
+	way to enable and disable it. The functions 'mybash-enconf' and
+	'mybash-disconf' will do just that. The idea is taken from Apache's
+	very simple website and mod configuration - two folders exist,
+	'confs-available' and 'confs-enabled'. The latter stores symlinks to
+	mods you want enabled. 'main' will read all .confs in the 
+	'confs-enabled' folder.
+	
+	Note that 'mybash-enconf' and 'mybash-disconf' can be disabled
+	themselves, but through manual editing of the 'main' file. If they are
+	disabled, 'main' can be modified as you would normally the .bashrc
+	file - by sourcing files you want.
+
+3) THIS STUFF ISN'T ACTUALLY WORKING YET
+	but it will be eventually.
