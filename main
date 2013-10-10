@@ -4,7 +4,14 @@
 # From here, such options can be enabled and disabled separately with ease.
 # Please update this file if you add any new option files!
 
-. ~/.mybash.d/prompt
-mybash_prompt
-
-. ~/.mybash.d/aliases
+function mybash-reload {
+	for file in $MYBASH_DIR/confs-enabled/*
+	do
+		if [[ -f $file ]]; then
+			. $file
+		fi
+	done
+	mybash-refresh-prompt
+	mybash-refresh-aliases
+}
+mybash-reload
