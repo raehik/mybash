@@ -1,0 +1,14 @@
+#!/bin/bash
+
+function rmvim {
+for file in `find . -maxdepth 1 -mindepth 1 -type f -name "*~"`
+do
+	echo -n "Remove ${file}? (Y/N): "
+	read yn
+	if [ "$yn" == "Y" ] || [ "$yn" == "y" ]; then
+		rm ${file}
+	else
+		echo "Not removing."
+	fi
+done
+}
