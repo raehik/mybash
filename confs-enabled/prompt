@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function mybash-refresh-prompt {
-. ~/.mybash.d/.colours
+. ${MYBASH_DIR}/.colours
 # Default colour scheme if there isn't one for the current hostname
 col_name=${dark}${grn}
 col_at=${dark}${grn}
