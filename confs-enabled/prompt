@@ -35,3 +35,4 @@ fi
 # You shouldn't need to change this: it depends on the COL_ variables.
 PS1="${debian_chroot:+($debian_chroot)}${col_name}\u${col_at}@${col_host}\h${col_colon}:${col_pwd}\${PWD}${col_prompt}\\$ ${none}"
 }
+mybash-refresh-prompt
