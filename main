@@ -11,7 +11,5 @@ function mybash-reload {
 			. $file
 		fi
 	done
-	mybash-refresh-prompt
-	mybash-refresh-aliases
 }
 mybash-reload

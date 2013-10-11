@@ -20,3 +20,4 @@ alias l='ls -CF'
 # set command-line editing to vi mode
 set -o vi
 }
+mybash-refresh-aliases
