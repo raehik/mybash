@@ -1,8 +1,6 @@
 #!/bin/bash
 
 function mybash-refresh-aliases() {
-alias u='cd ..' # go up 1 level
-
 # colour ls and grep by default if available
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -12,12 +10,13 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# ls aliases
+# useful ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# set command-line editing to vi mode
-set -o vi
+set -o vi # vi mode cli editing (via esc key)
+
+alias u='cd ..' # go up 1 level
 }
 mybash-refresh-aliases
