@@ -1,0 +1,9 @@
+#!/bin/bash
+
+function testes(){
+. .unichars
+. .colours
+echo -e "\E[33m\E[1m${u_black_star}\E[0m."
+}
+testes
+unset testes
