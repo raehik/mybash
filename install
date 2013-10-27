@@ -10,17 +10,17 @@ read MYBASH_DIR
 
 # if directory exists, delete it
 if [ -e $MYBASH_DIR ]; then
-	echo -n "WARNING: Directory already exists. Contents will be deleted. Continue? (Y/N): "
+	echo -n "WARNING: Directory already exists. Contents will be deleted. Continue? (y/n): "
 	read dir_cont
-	if [ "$dir_cont" == "Y" ] || [ "$dir_cont" == "y" ]; then
+	if [ "$dir_cont" == "y" ]; then
 		echo "Deleting $MYBASH_DIR..."
 		rm -r -f $MYBASH_DIR
-	elif [ "$dir_cont" == "N" ] || [ "$dir_cont" == "n" ]; then
+	elif [ "$dir_cont" == "n" ]; then
 		echo "Exiting..."
 		exit 1
 	else
-		echo "ERROR: Your input was not Y/N."
-		exit 1
+		echo "ERROR: input not y/n"
+		exit 2
 	fi
 fi
 
