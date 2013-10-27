@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# This file is meant to be sourced to provide human readable variables for
-# Unicode characters in the UTF-8 encoding.
-# Use '. ~/{MYBASH_DIR}/.unichars' to source it.
-# NOTE: You can colour these and make them look really cool! Source both the
-# .colours file and this one to have great super ultra fun terminal prompts!
-local u_black_star='\u2605'
