@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# This file is meant to be sourced to provide human readable variables for
+# terminal colours.
+# Use '. ~/{MYBASH_DIR}/.colours' to source it.
+local none='\[\033[0m\]'
+local lght='\[\033[1m\]'
+local dark='\[\033[0m\]'
+local blk='\[\033[30m\]'
+local red='\[\033[31m\]'
+local grn='\[\033[32m\]'
+local yel='\[\033[33m\]'
+local blu='\[\033[34m\]'
+local pur='\[\033[35m\]'
+local cyn='\[\033[36m\]'
+local wht='\[\033[37m\]'
+local bg_dark_blk='\[\033[40m\]'
+local bg_dark_red='\[\033[41m\]'
+local bg_dark_grn='\[\033[42m\]'
+local bg_dark_yel='\[\033[43m\]'
+local bg_dark_blu='\[\033[44m\]'
+local bg_dark_pur='\[\033[45m\]'
+local bg_dark_cyn='\[\033[46m\]'
+local bg_dark_wht='\[\033[47m\]'
+local bg_lght_blk='\[\033[100m\]'
+local bg_lght_red='\[\033[101m\]'
+local bg_lght_grn='\[\033[102m\]'
+local bg_lght_yel='\[\033[103m\]'
+local bg_lght_blu='\[\033[104m\]'
+local bg_lght_pur='\[\033[105m\]'
+local bg_lght_cyn='\[\033[106m\]'
+local bg_lght_wht='\[\033[107m\]'
